@@ -1,0 +1,5 @@
+# Do not check in anything under tftp
+# it is only for distribution content which is provided by maintainers
+tftp/*
+# exception for README with some explanation 
+!tftp/README.md

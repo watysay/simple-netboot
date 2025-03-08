@@ -1,0 +1,9 @@
+services:
+  tftp:
+    build: ./
+    ports:
+      - "69:69/udp"
+    volumes:
+      - type: bind
+        source: ./tftp
+        target: /srv/tftp
