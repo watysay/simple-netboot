@@ -1,8 +1,8 @@
-# Simple TFTP server
+# Simple TFTP server
 
 Simple TFTP server for PXE booting
 
-## How to use
+## How to use
 
 Use ```make``` in order to build the image and launch the container, exposing local tftp directory content to port 69 on local IP.
 On network boot, other machines on the network should be able to get pxelinux.0 bootloader.
@@ -23,13 +23,13 @@ and set it up under tftp/
 
 
 
-## Files
+## Files
 
 ### Dockerfile
 
 Dockerfile contains tfpt server installation, configuration and entrypoint for clients.
 
-### docker-compose.yml
+### docker-compose.yml
 
 This file contains info for building the image, expose port and bind local tftp directory for sharing.
 
