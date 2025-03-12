@@ -14,7 +14,8 @@ set menu-default debian12
 :start
 menu iPXE boot menu
 item --gap --    ------------------------ OS -----------------------
-item --key d    debian12         Debian 12 netboot
+item --key d debian12            (D)ebian 12 netboot interactive
+item --key k debian12_custom     Debian 12 netboot custom (K)ernel params
 choose --timeout ${menu-timeout} --default ${menu-default} selected
 goto ${selected}
 
@@ -24,6 +25,12 @@ goto ${selected}
 kernel debian-installer/amd64/linux
 initrd debian-installer/amd64/initrd.gz
 boot
+
+:debian12_custom
+initrd debian-installer/amd64/initrd.gz
+echo -n Custom Kernel command line: ${}
+read cmdline
+chain debian-installer/amd64/linux ${cmdline}
 
 goto start
 
