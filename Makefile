@@ -19,7 +19,12 @@ up:
 # Pour les machines avec UEFI, vous devrez vous assurer de donner un nom adapté à l'image (par exemple /debian-installer/amd64/bootnetx64.efi).
 # ^^^^ on peut faire un if dans le fichier avec l'arch renvoyé par le client (bios ou uefi) pour proposer la bonne image
 debian:
+	# netboot dl
 	$(MAKE) tftp/debian-installer/amd64/pxelinux.0
+	# add symlink for uefi
+	ln -s tftp/debian-installer/amd64/grub/grub.cfg ./tftp/
+	ln -s tftp/debian-installer/amd64/bootnetx64.efi ./tftp/
+	ln -s tftp/debian-installer/amd64/grubx64.efi ./tftp/
 
 tftp/debian-installer/amd64/pxelinux.0:
 	wget http://ftp.fr.debian.org/debian/dists/bookworm/main/installer-amd64/current/images/netboot/netboot.tar.gz

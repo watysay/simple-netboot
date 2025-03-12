@@ -22,7 +22,8 @@ On network boot, other machines on the network should be able to get pxelinux.0 
 on running ```make```, you should get your local IP address.
 Set this IP in your DHCP server as 'next-server' or 'TFTP server' value.
 Set 'filename' to equal _pxelinux.0_
-
+If possible, add conditionnal for architecture : server either _pxelinux.0_ or _bootnetx64.efi_
+(for BIOS or UEFI).
 
 
 > For OPNSense, the right config seems to be (under Services > DHCPv4 > LAN):
