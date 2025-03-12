@@ -7,3 +7,11 @@ services:
       - type: bind
         source: ./data
         target: /srv/tftp
+  web:
+    image: httpd:latest
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data
+        target: /usr/local/apache2/htdocs
