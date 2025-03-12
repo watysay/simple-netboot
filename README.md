@@ -12,13 +12,14 @@ Simple Netboot server for iPXE booting
 For Debian 12 netboot:
 
 ```$ make```
+
 Put shown IP address in DHCP config, add 'undionly.kpxe' as BIOS filename,
 'ipxe.efi' as UEFI filename and 'main.ipxe' as iPXE filename.
 
 
 ### Details
 
-Use ```make``` in order to retrieve Debian netboot image, setup ipxe, build the image and launch the container,
+Use ```make``` in order to retrieve Debian netboot image, setup ipxe, build the Docker image and launch the container,
 exposing local data directory content to port 69 (tftp protocol) on local IP.
 On network boot, other machines on the network should be able to get iPXE bootloaders.
 
