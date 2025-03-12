@@ -1,0 +1,31 @@
+#!ipxe
+
+# reload dhcp config just in case
+dhcp
+
+# var next-server is known
+echo Next server : ${next-server}
+
+set menu-timeout 5000
+set menu-default debian12
+
+
+########## MENU DISPLAY - choose OS + install ##########
+:start
+menu iPXE boot menu
+item --gap --    ------------------------ OS -----------------------
+item --key d    debian12         Debian 12 netboot
+choose --timeout ${menu-timeout} --default ${menu-default} selected
+goto ${selected}
+
+
+########## MENU OPTIONS and their kernel/initrd/parameters
+:debian12
+kernel debian-installer/amd64/linux
+initrd debian-installer/amd64/initrd.gz
+boot
+
+goto start
+
+# drop to shell just in case
+shell

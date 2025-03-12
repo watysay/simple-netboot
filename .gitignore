@@ -1,5 +1,5 @@
-# Do not check in anything under tftp
+# Do not check in anything under data
 # it is only for distribution content which is provided by maintainers
-tftp/*
+data/*
 # exception for README with some explanation 
-!tftp/README.md
+!data/README.md
