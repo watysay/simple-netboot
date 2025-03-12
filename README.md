@@ -49,6 +49,8 @@ Other options are:
 
 ```make clean``` will stop and remove container and network (aka ```docker compose down```)
 
+```make reset``` will ```make clean``` + purge the directory data/ aka reset to initial state.
+
 Run ```git pull ; make ipxe``` when testing, in order to replace files under data/ with the new ones.
 
 

@@ -42,5 +42,8 @@ data/ipxe.efi:
 
 clean:
 	docker compose down
+reset:
+	$(MAKE) clean
+	cd data && find . ! -name "README.md" -delete && echo "Directory data/ purged"
 
 # pour les tests, proxmox propose seaBIOS et UEFI
