@@ -49,7 +49,14 @@ Other options are:
 
 ```make clean``` will stop and remove container and network (aka ```docker compose down```)
 
+Run ```git pull ; make ipxe``` when testing, in order to replace files under data/ with the new ones.
 
+
+#### Notes
+
+For permissions reasons, it is not possible to symlinks what exists in the main directory
+into the data directory. As ```make ipxe``` copies _main.ipxe_ for the setup, it is good practice to run it
+after a ```git pull``` in order to refresh. In any case, all files in this situation will be refresh when running ```make```.
 
 ## Files
 

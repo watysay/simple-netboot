@@ -29,7 +29,7 @@ data/debian-installer/amd64/pxelinux.0:
 # Ajout deux fichiers pour booter iPXE depuis BIOS ou UEFI
 #+ menu main.ipxe pour gérer le boot kernel
 ipxe: data/main.ipxe data/undionly.kpxe data/ipxe.efi
-data/main.ipxe:
+data/main.ipxe: main.ipxe
 	cp -p ./main.ipxe ./data/
 data/undionly.kpxe:
 	wget http://boot.ipxe.org/undionly.kpxe -O ./data/undionly.kpxe
