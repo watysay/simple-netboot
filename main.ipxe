@@ -6,6 +6,9 @@ dhcp
 # var next-server is known
 echo Next server : ${next-server}
 
+set http-root http://${next-server}
+echo Http server : ${http-root}
+
 set menu-timeout 5000
 set menu-default debian12
 
@@ -22,15 +25,15 @@ goto ${selected}
 
 ########## MENU OPTIONS and their kernel/initrd/parameters
 :debian12
-kernel debian-installer/amd64/linux
-initrd debian-installer/amd64/initrd.gz
+kernel ${http-root}/debian-installer/amd64/linux
+initrd ${http-root}/debian-installer/amd64/initrd.gz
 boot
 
 :debian12_custom
-initrd debian-installer/amd64/initrd.gz
+initrd ${http-root}/debian-installer/amd64/initrd.gz
 echo -n Custom Kernel command line: ${}
 read cmdline
-chain debian-installer/amd64/linux ${cmdline}
+chain ${http-root}/debian-installer/amd64/linux ${cmdline}
 
 goto start
 
