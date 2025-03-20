@@ -19,7 +19,9 @@ up: debian ipxe
 # Extrayez les fichiers dans le répertoire des images de tftpd. Assurez-vous que le serveur DHCP donnera bien le fichier pxelinux.0 comme fichier d'amorçage à tftpd.
 # Pour les machines avec UEFI, vous devrez vous assurer de donner un nom adapté à l'image (par exemple /debian-installer/amd64/bootnetx64.efi).
 # ^^^^ on peut faire un if dans le fichier avec l'arch renvoyé par le client (bios ou uefi) pour proposer la bonne image
-debian: data/debian-installer/amd64/pxelinux.0
+debian: data/debian-installer/amd64/pxelinux.0 data/preseed.cfg
+data/preseed.cfg: preseed.cfg
+        cp -p ./preseed.cfg ./data/
 data/debian-installer/amd64/pxelinux.0:
 	wget http://ftp.fr.debian.org/debian/dists/bookworm/main/installer-amd64/current/images/netboot/netboot.tar.gz
 	tar xzf netboot.tar.gz -C ./data/

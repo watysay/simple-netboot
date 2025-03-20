@@ -18,6 +18,7 @@ set menu-default debian12
 menu iPXE boot menu
 item --gap --    ------------------------ OS -----------------------
 item --key d debian12            (D)ebian 12 netboot interactive
+item --key p debian12_pre        Debian 12 preseed
 item --key k debian12_custom     Debian 12 netboot custom (K)ernel params
 choose --timeout ${menu-timeout} --default ${menu-default} selected
 goto ${selected}
@@ -26,6 +27,11 @@ goto ${selected}
 ########## MENU OPTIONS and their kernel/initrd/parameters
 :debian12
 kernel ${http-root}/debian-installer/amd64/linux
+initrd ${http-root}/debian-installer/amd64/initrd.gz
+boot
+
+:debian12_pre
+kernel ${http-root}/debian-installer/amd64/linux locale=fr_FR.UTF-8 keymap=fr priority=critical auto url=${http-root}/preseed.cfg
 initrd ${http-root}/debian-installer/amd64/initrd.gz
 boot
 
