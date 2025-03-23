@@ -21,7 +21,8 @@ up: debian ipxe
 # ^^^^ on peut faire un if dans le fichier avec l'arch renvoyé par le client (bios ou uefi) pour proposer la bonne image
 debian: data/debian-installer/amd64/pxelinux.0 data/preseed.cfg
 data/preseed.cfg: preseed.cfg
-        cp -p ./preseed.cfg ./data/
+	cp -p ./preseed.cfg ./data/
+
 data/debian-installer/amd64/pxelinux.0:
 	wget http://ftp.fr.debian.org/debian/dists/bookworm/main/installer-amd64/current/images/netboot/netboot.tar.gz
 	tar xzf netboot.tar.gz -C ./data/
