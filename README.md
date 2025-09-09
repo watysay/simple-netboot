@@ -9,7 +9,7 @@ Simple Netboot server for iPXE booting
 
 ### TL;DR
 
-For Debian 12 netboot:
+For Debian 13 netboot:
 
 ```$ make```
 
@@ -43,7 +43,7 @@ If possible, add conditionnal for architecture : serve either _undionly.kpxe_ or
 
 Other options are:
 
-```make debian``` will retrieve Debian 12 netboot archive and set it up under data/
+```make debian``` will retrieve Debian 13 netboot archive and set it up under data/
 
 ```make ipxe``` will retrieve iPXE Network Boot Programs (undionly.kpxe and ipxe.efi) under data/ and copy main.ipxe under data/
 

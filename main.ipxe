@@ -10,38 +10,38 @@ set http-root http://${next-server}
 echo Http server : ${http-root}
 
 set menu-timeout 5000
-set menu-default debian12
+set menu-default debian13
 
 
 ########## MENU DISPLAY - choose OS + install ##########
 :start
 menu iPXE boot menu
 item --gap --    ------------------------ OS -----------------------
-item --key d debian12                (D)ebian 12 netboot interactive
-item --key p debian12_pre            Debian 12 preseed
-item --key p debian12_node_pve       Debian 12 Node PVE (auto)
-item --key k debian12_custom         Debian 12 netboot custom (K)ernel params
+item --key d debian13                (D)ebian 13 netboot interactive
+item --key p debian13_pre            Debian 13 preseed
+item --key p debian13_node_pve       Debian 13 Node PVE (auto)
+item --key k debian13_custom         Debian 13 netboot custom (K)ernel params
 choose --timeout ${menu-timeout} --default ${menu-default} selected
 goto ${selected}
 
 
 ########## MENU OPTIONS and their kernel/initrd/parameters
-:debian12
+:debian13
 kernel ${http-root}/debian-installer/amd64/linux
 initrd ${http-root}/debian-installer/amd64/initrd.gz
 boot
 
-:debian12_pre
+:debian13_pre
 kernel ${http-root}/debian-installer/amd64/linux locale=fr_FR.UTF-8 keymap=fr priority=critical auto url=${http-root}/preseed.cfg
 initrd ${http-root}/debian-installer/amd64/initrd.gz
 boot
 
-:debian12_node_pve
+:debian13_node_pve
 kernel ${http-root}/debian-installer/amd64/linux locale=fr_FR.UTF-8 keymap=fr priority=critical auto url=${http-root}/preseed.cfg installmode="node-pve"
 initrd ${http-root}/debian-installer/amd64/initrd.gz
 boot
 
-:debian12_custom
+:debian13_custom
 initrd ${http-root}/debian-installer/amd64/initrd.gz
 echo -n Custom Kernel command line: ${}
 read cmdline

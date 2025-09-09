@@ -14,7 +14,7 @@ up: debian ipxe
 
 # pour "debian" si existe fichier pxelinux.0 alors ne rien faire
 # sinon dl dans data
-# http://ftp.fr.debian.org/debian/dists/bookworm/main/installer-amd64/current/images/netboot/netboot.tar.gz
+# http://ftp.fr.debian.org/debian/dists/trixie/main/installer-amd64/current/images/netboot/netboot.tar.gz
 # Pour le démarrage PXE, tout ce dont vous avez besoin est dans l'archive netboot/netboot.tar.gz.
 # Extrayez les fichiers dans le répertoire des images de tftpd. Assurez-vous que le serveur DHCP donnera bien le fichier pxelinux.0 comme fichier d'amorçage à tftpd.
 # Pour les machines avec UEFI, vous devrez vous assurer de donner un nom adapté à l'image (par exemple /debian-installer/amd64/bootnetx64.efi).
@@ -24,7 +24,7 @@ data/preseed.cfg: preseed.cfg
 	cp -p ./preseed.cfg ./data/
 
 data/debian-installer/amd64/pxelinux.0:
-	wget http://ftp.fr.debian.org/debian/dists/bookworm/main/installer-amd64/current/images/netboot/netboot.tar.gz
+	wget http://ftp.fr.debian.org/debian/dists/trixie/main/installer-amd64/current/images/netboot/netboot.tar.gz
 	tar xzf netboot.tar.gz -C ./data/
 	rm netboot.tar.gz
 
