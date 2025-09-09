@@ -26,7 +26,10 @@ data/preseed.cfg: preseed.cfg
 data/debian-installer/amd64/pxelinux.0:
 	wget http://ftp.fr.debian.org/debian/dists/trixie/main/installer-amd64/current/images/netboot/netboot.tar.gz
 	tar xzf netboot.tar.gz -C ./data/
-	rm netboot.tar.gz
+	mv ./data/debian-installer/amd64/initrd.gz ./initrd.gz.orig
+	wget https://cdimage.debian.org/cdimage/firmware/trixie/current/firmware.cpio.gz
+	cat initrd.gz.orig firmware.cpio.gz > ./data/debian-installer/amd64/initrd.gz
+	rm netboot.tar.gz initrd.gz.orig firmware.cpio.gz
 
 # Ajout de fonctionnalité iPXE
 # Ajout deux fichiers pour booter iPXE depuis BIOS ou UEFI
